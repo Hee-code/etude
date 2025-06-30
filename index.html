@@ -1,148 +1,278 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E/T/U/D/E</title>
-  <link rel="stylesheet" href="etude.css">
+  <title>ETUDE_리뉴얼</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/a6d4db907a.js" crossorigin="anonymous"></script>
+  <linkrel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  //메인배너
+  window.addEventListener("load", () => {
+    const banners = document.querySelectorAll(".fade_banner > li");
+    let current = 0;
+
+    setInterval(() => {
+      banners[current].classList.remove("active");
+      current = (current + 1) % banners.length;
+      banners[current].classList.add("active");
+    }, 5000);
+  });
+
+
+  //중간배너
+  $(function () {
+    // 처음엔 첫 번째 배너만 보여줌
+    $('.mid_b_cont > li').hide().eq(0).fadeIn();
+    $('.page_num > li').eq(0).addClass('on');
+
+    // 숫자 클릭 시 해당 배너만 표시
+    $('.page_num > li').click(function () {
+      const index = $(this).index();
+
+      // 숫자 활성화 스타일
+      $('.page_num > li').removeClass('on');
+      $(this).addClass('on');
+
+      // 배너 페이드 전환
+      $('.mid_b_cont > li').stop(true, true).fadeOut(100);
+      $('.mid_b_cont > li').eq(index).stop(true, true).fadeIn(300);
+    });
+  });
+</script>
 </head>
 <body>
-  <div id="header"></div>
+  <div id="header">
+    <div class="top_menu">
+      <h1 class="top_logo"><img src="images/img_logo2023-1-150x65.png" alt="logo"></h1>
+      <ul class="gnb">
+        <li><a href="#">PRODUCT</a></li>
+        <li><a href="#">BRAND</a></li>
+        <li><a href="#">MAKEUP LOOK</a></li>
+        <li><a href="#">STORE</a></li>
+      </ul>
+      <ul class="nav">
+        <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+        <li><a href="#"><i class="fa-regular fa-user"></i></a></li>
+        <li><a href="#"><i class="fa-solid fa-bag-shopping"></i></a></li>
+        <li><a href="#"><i class="fa-solid fa-bars"></i></a></li>
+      </ul>
+    </div>
+  </div>
+
+
   <div id="section">
-    <div class="new">
-      <div class="new_title">
-        <img src="images/lip.png" alt="icon">
-        <h1 class="new_tit">What's New</h1>
-        <p class="new_desc">주목! 신상이 궁금해? 설레는 신상으로 채워지는 작은 행복</p>
-        <p class="more">View more</p>
+    <div class="main_b">  <!-- 메인배너 -->
+        <ul class="fade_banner">
+          <li class="main1 active">
+            <h2 class="main_txt_main eng_font">Fruity Lip & Cheek<br>Blur Balm</h2>
+            <p class="main_txt_sub">입술과 두 볼을 맑게 물들이는 컬러감</p>
+          </li>
+          <li class="main2">
+            <h2 class="main_txt_main">ETUDE X<br>마루는 강쥐</h2>
+            <p class="main_txt_sub">나 화장품 됐다 짱이지?</p>
+          </li>
+          <li class="main3">
+            <h2 class="main_txt_main eng_font">Sugar Coloring<br>Jelly Balm</h2>
+            <p class="main_txt_sub">도톰하고 반짝이는 생기 입술</p>
+          </li>
+        </ul>
+      <div class="main_btn">
+        <div class="mb_rotate">  <!-- 회전 -->
+          <img src="images/mb_rotate.png" alt="more">
+        </div>
+        <div class="mb_arrow">
+          <img src="images/mb_arrow.png" alt="arrow">
+        </div>
       </div>
-      <ul class="new_cont">
+    </div>
+
+    <div class="soonjung"> <!-- 순정라인 -->
+      <h2 class="eng_font"><span>Soon Jung</span><br>Cica<br>Hypoallergenic</h2>
+      <ul class="sj_cont">
         <li>
-          <a href="#">
-            <div class="img_wrap">
-              <ul class="badge">
-                <li>NEW</li>
-                <li>지그재그</li>
-              </ul>
-              <div class="cont1_img">
-                <img src="images/001.jpg" alt="balm1">
-                <img src="images/011.jpg" alt="balm1_on">
-              </div>
-            </div>
-            <p class="con_t1">
-              <span>#짝꿍매치 #크리미밤&꿀잼코팅</span><br>
-              베스트 듀오 단지밤
-            </p>
-            <ul class="balm_color">
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-            <div class="price">22,000원</div>
-          </a>
+          <img class="gray" src="images/c1_form1.png" alt="form_gray">
+          <img class="color" src="images/c1_form1_c.png" alt="form_color">
         </li>
         <li>
-          <a href="#">
-            <div class="img_wrap">
-              <ul class="badge">
-                <li>NEW</li>
-                <li>올리브영</li>
-              </ul>
-              <div class="cont2_img">
-                <img src="images/002.jpg" alt="cheek1">
-                <img src="images/022.jpg" alt="cheek1_on">
-              </div>
-            </div>
-            <p class="con_t2">
-              <span>#보송한파우더 #뽀용블러치크</span><br>
-              벌룬 인 치크
-            </p>
-            <ul class="cheek_color">
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          <div class="price">13,000원</div>
-          </a>
+          <img class="gray" src="images/c1_cica2.png" alt="cica_gray">
+          <img class="color" src="images/c1_cica2_c.png" alt="cica_color">
         </li>
         <li>
-          <a href="#">
-            <div class="img_wrap">
-              <ul class="badge">
-                <li>NEW</li>
-              </ul>
-              <div class="cont3_img">
-                <img src="images/003.jpg" alt="fruty1">
-                <img src="images/033.jpg" alt="fruty1_on">
-              </div>
-            </div>
-            <p class="con_t3">
-              <span>#방토하우스 #크림블러밤</span><br>
-              프루티 립앤치크 블러밤 2.3g
-            </p>
-            <ul class="fruty_color">
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          <div class="price">14,000원</div>
-          </a>
+          <img class="gray" src="images/c1_wheep3.png" alt="wheep_gray">
+          <img class="color" src="images/c1_wheep3_c.png" alt="wheep_color">
         </li>
         <li>
-          <a href="#">
-            <div class="img_wrap">
-              <ul class="badge">
-                <li>NEW</li>
-                <li>올리브영</li>
-              </ul>
-              <div class="cont4_img">
-                <img src="images/004.jpg" alt="soon1">
-                <img src="images/044.jpg" alt="soon1_on">
-              </div>
-            </div>
-            <p class="con_t4">
-              <span>#약산성 #피부장벽보호 #피지세정</span><br>
-              에뛰드 순정 약산성 클렌징 밀크 2종 기획 세트
-            </p>
-            <ul class="soon_color">
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          <div class="price">14,000원</div>
-          </a>
+          <img class="gray" src="images/c1_cream4.png" alt="cream1_gray">
+          <img class="color" src="images/c1_cream4_c.png" alt="cream1_color">
+        </li>
+        <li>
+          <img class="gray" src="images/c1_cream5.png" alt="cream2_gray">
+          <img class="color" src="images/c1_cream5_c.png" alt="cream2_color">
         </li>
       </ul>
     </div>
-    <div class="sns">
-      <div class="sns_area">
-        <div class="tiktok">
-          <div class="t_txt">
-            <p>ETUDE Official <span>Tiktok</span></p>
-            <img src="images/101.jpg" alt="썸네일">
-          </div>
-          <p>FOLLOW US</p>
-          <p class="tt">@etude_official</p>
-        </div>
-        <div class="insta">
-          <ul class="sns_icon">
-            <li><a href="#"><img src="images/i.png" alt="인스타"></a></li>
-            <li><a href="#"><img src="images/f.png" alt="페북"></a></li>
-            <li><a href="#"><img src="images/y.png" alt="유튜브"></a></li>
-            <li><a href="#"><img src="images/t.png" alt="틱톡"></a></li>
-          </ul>
-            <div class=i_txt>
-              <p>ETUDE Official <span>Instagram</span></p>
-            <img src="images/insta.png" alt="제품사진">
-            </div>
+
+    <div class="mid_b"> <!-- 중간 배너 -->
+      <div class="page_num_bg">
+        <div class="page_num">
+          <li>0 1</li>
+          <li>0 2</li>
+          <li>0 3</li>
         </div>
       </div>
-      <div class="bg"></div>
+      <ul class="mid_b_cont">
+        <li class="mid1">
+          <h2 class="mid_b_txt_main eng_font">Double Lasting<br>Foundation</h2>
+          <p class="mid_b_txt_sub">비건을 만나 더 강력해진 24시간 커버 지속력</p>
+        </li>
+        <li class="mid2">
+          <h2 class="mid_b_txt_main eng_font">Sugar Coloring<br>Jelly Balm</h2>
+          <p class="mid_b_txt_sub">도톰하고 반짝이는 생기 입술로 슈가 코팅 젤리 립밤</p>
+        </li>
+        <li class="mid3">
+          <h2 class="mid_b_txt_main eng_font">Ginger Sugar<br>Lip Mask</h2>
+          <p class="mid_b_txt_sub">입술 마를 틈 없는 촉촉한 보습의 립 마스크</p>
+        </li>
+    </ul>
+    </div>
+
+    <div class="lovely"> <!-- 색조 (background-image)-->
+      <div class="lovely_txt">
+        <h1 class="eng_font">Lovely<br>Color</h1>
+        <p>
+          색조 맛집, 에뛰드<br>
+          당신의 메이크업을 함께할<br>
+          에뛰드를 확인해보세요!
+        </p>
+      </div>
+      <ul class="love_img">
+        <li class="lip1"><img src="images/lip1.png" alt="fixing1"></li>
+        <li class="lip2"><img src="images/lip2.png" alt="fixing2"></li>
+        <li class="lip3"><img src="images/lip3.png" alt="glow"></li>
+      </ul>
+
+      <div class="lovely_rotate">  <!-- 회전 -->
+          <img src="images/mid_rotate.png" alt="more">
+        </div>
+        <div class="lovely_arrow">
+          <img src="images/mid_arrow.png" alt="arrow">
+        </div>
+    </div>
+
+    <div class="review"> <!-- 리뷰 -->
+      <div class="top_cont">
+        <div class="left">
+          <h3 class="eng_font">Eye<br>palette</h3>
+          <p>#봄웜여쿨<br>#생기톤온톤</p>
+          <img src="images/pal.png" alt="palette">
+        </div>
+        <div class="right">
+          <p>본사직영점에서만 누릴 수 있는 혜택!</p>
+          <ul class="coupon">
+            <li><img src="images/coupon1.png" alt="coupon1"></li>
+            <li><img src="images/coupon2.png" alt="coupon2"></li>
+            <li><img src="images/coupon3.png" alt="coupon3"></li>
+          </ul>
+        </div>
+      </div>
+      <div class="bt_cont">
+        <h2 class="eng_font">Review</h2>
+        <div class="img_rotate swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img class="gray" src="images/review1.png" alt="review1_gray">
+              <img class="color" src="images/review1_c.png" alt="review1_color">
+            </div>
+            <div class="swiper-slide">
+              <img class="gray" src="images/review2.png" alt="review2_gray">
+              <img class="color" src="images/review2_c.png" alt="review2_color">
+            </div>
+            <div class="swiper-slide">
+              <img class="gray" src="images/review3.png" alt="review3_gray">
+              <img class="color" src="images/review3_c.png" alt="review3_color">
+            </div>
+            <div class="swiper-slide">
+              <img class="gray" src="images/review4.png" alt="review4_gray">
+              <img class="color" src="images/review4_c.png" alt="review4_color">
+            </div>
+            <div class="swiper-slide">
+              <img class="gray" src="images/review5.png" alt="review5_gray">
+              <img class="color" src="images/review5_C.png" alt="review5_color">
+            </div>
+            <div class="swiper-slide">
+              <img class="gray" src="images/review6.png" alt="review6_gray">
+              <img class="color" src="images/review6_c.png" alt="review6_color">
+            </div>
+          </div>
+        </div>
+        <div class="review_rotate">
+          <img src="images/r_rotate.png" alt="review_rotate">
+        </div>
+        <div class="review_arrow">
+          <img src="images/r_arrow.png" alt="review_arrow">
+        </div>
+      </div>
+    </div>
   </div>
-  <div id="footer"></div>
+
+
+  <div id="footer">
+    <div class="foot_cont">
+      <div class="foot_left">
+        <h1 class="foot_logo"><img src="images/img_logo2023-1-150x65.png" alt="f_logo"></h1>
+        <ul class="foot_left_txt">
+          <li>법인명(상호) : 주식회사 에뛰드</li>
+          <li>대표자 : 이수연</li>
+          <li>전화 : 080-022-2285</li>
+          <li>이메일 : etude_master@etude.co.kr</li>
+          <li>사업자등록번호 : 135-81-05033</li>
+          <li>주소 : 서울특별시 용산구 한강대로 100 (한강로 2가)</li>
+          <li>ⓒETUDE CORPORATION. ALL RIGHT RESERVED.</li>
+        </ul>
+      </div>
+      <div class="foot_right">
+        <ul class="sns">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Youtube</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+        <ul class="legal_info">
+          <li>이용약관</li>
+          <li>개인정보처리방침</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+  const swiper = new Swiper(".img_rotate", {
+    slidesPerView: 5,
+    spaceBetween:30,
+    centeredSlides: false,
+    loop: true,
+    autoplay: {
+    delay: 3000,
+    disableOnInteraction: false
+  },
+  on: {
+    slideChangeTransitionEnd: function(){
+      updateColorByPosition(this);
+      },
+    init: function(){
+      updateColorByPosition(this);
+      }
+    }
+  });
+
+  function updateColorByPosition(swiper) {
+    const slides = swiper.slides;
+    slides.forEach(slide => slide.classList.remove("color-visible"));
+  }
+  </script>
 </body>
 </html>

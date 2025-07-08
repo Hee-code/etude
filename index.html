@@ -9,6 +9,22 @@
   <linkrel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+  //햄버거메뉴
+  $(function (){
+    $('.nav .ham > a').click(function(e){
+      e.preventDefault();
+      $(this).parent().toggleClass('active');
+    });
+    //외부 클릭 시 닫기
+    $(document).click(function(e){
+      if (!$(e.target).closest('.ham').length){
+        $('.nav .ham').removeClass('active');
+      }
+    });
+  });
+
+
+
   //메인배너
   window.addEventListener("load", () => {
     const banners = document.querySelectorAll(".fade_banner > li");
@@ -22,24 +38,56 @@
   });
 
 
+
   //중간배너
-  $(function () {
-    // 처음엔 첫 번째 배너만 보여줌
-    $('.mid_b_cont > li').hide().eq(0).fadeIn();
-    $('.page_num > li').eq(0).addClass('on');
+  $(function (){
+    let current = 0;
+    const banners = $('.mid_b_cont > li');
+    const buttons = $('.page_num > li');
+    const total = banners.length;
+    let timer;
 
-    // 숫자 클릭 시 해당 배너만 표시
-    $('.page_num > li').click(function () {
+    //초기 설정
+    banners.hide().eq(0).fadeIn();
+    buttons.eq(0).addClass('on');
+
+    function showBanner(index){
+      banners.removeClass('acitve').hide();
+      banners.eq(index).addClass('active').show();
+      buttons.removeClass('on').eq(index).addClass('on');
+      current = index;
+    }
+    // function showBanner(index) {
+    //   banners.stop(true, true).fadeOut(300);
+    //   banners.eq(index).stop(true, true).fadeIn(600);
+    //   buttons.removeClass('on').eq(index).addClass('on');
+    //   current = index;
+    // }
+
+    //페이지 넘버 클릭 이벤트
+    buttons.click(function () {
       const index = $(this).index();
-
-      // 숫자 활성화 스타일
-      $('.page_num > li').removeClass('on');
-      $(this).addClass('on');
-
-      // 배너 페이드 전환
-      $('.mid_b_cont > li').stop(true, true).fadeOut(100);
-      $('.mid_b_cont > li').eq(index).stop(true, true).fadeIn(300);
+      showBanner(index);
+      resetTimer();
     });
+
+    //오토
+    function autoSlide(){
+      current = (current + 1) % total;
+      showBanner(current);
+    }
+
+    //일정 시간마다 자동 실행(3초)
+    function startTimer(){
+      timer = setInterval(autoSlide, 3000);
+    }
+
+    //클릭 시 타이머 리셋
+    function resetTimer(){
+      clearInterval(timer);
+      startTimer();
+    }
+    startTimer();
   });
 </script>
 </head>
@@ -57,7 +105,18 @@
         <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
         <li><a href="#"><i class="fa-regular fa-user"></i></a></li>
         <li><a href="#"><i class="fa-solid fa-bag-shopping"></i></a></li>
-        <li><a href="#"><i class="fa-solid fa-bars"></i></a></li>
+        <li class="ham">
+          <a href="#"><i class="fa-solid fa-bars"></i></a>
+          <ul class="ham_menu">
+            <li><a href="#">PRODUCT</a></li>
+            <li><a href="#">BRAND</a></li>
+            <li><a href="#">MAKEUP LOOK</a></li>
+            <li><a href="#">@etudeoffical</a></li>
+            <li><a href="#">STORE</a></li>
+            <li><a href="#">CONTACT</a></li>
+            <li><a href="#">MEMBERSHIP</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
@@ -93,24 +152,39 @@
       <h2 class="eng_font"><span>Soon Jung</span><br>Cica<br>Hypoallergenic</h2>
       <ul class="sj_cont">
         <li>
-          <img class="gray" src="images/c1_form1.png" alt="form_gray">
-          <img class="color" src="images/c1_form1_c.png" alt="form_color">
+          <div>
+            <div><img class="gray" src="images/c1_form1.png" alt="form_gray"></div>
+            <div><img class="color" src="images/c1_form1_c.png" alt="form_color"></div>
+          </div>
+          <p class="sj_name">순정 약산성 5.5 폼 클렌저</p>
         </li>
         <li>
-          <img class="gray" src="images/c1_cica2.png" alt="cica_gray">
-          <img class="color" src="images/c1_cica2_c.png" alt="cica_color">
+          <div>
+            <div><img class="gray" src="images/c1_cica2.png" alt="cica_gray"></div>
+            <div><img class="color" src="images/c1_cica2_c.png" alt="cica_color"></div>
+          </div>
+          <p class="sj_name">순정 시카 카밍 앰플 에센스</p>
         </li>
         <li>
-          <img class="gray" src="images/c1_wheep3.png" alt="wheep_gray">
-          <img class="color" src="images/c1_wheep3_c.png" alt="wheep_color">
+          <div>
+            <div><img class="gray" src="images/c1_wheep3.png" alt="wheep_gray"></div>
+            <div><img class="color" src="images/c1_wheep3_c.png" alt="wheep_color"></div>
+          </div>
+          <p class="sj_name">순정 약산성 6.5 휩 클렌저</p>
         </li>
         <li>
-          <img class="gray" src="images/c1_cream4.png" alt="cream1_gray">
-          <img class="color" src="images/c1_cream4_c.png" alt="cream1_color">
+          <div>
+            <div><img class="gray" src="images/c1_cream4.png" alt="cream1_gray"></div>
+            <div><img class="color" src="images/c1_cream4_c.png" alt="cream1_color"></div>
+          </div>
+          <p class="sj_name">순정 2x 베리어 보습 크림</p>
         </li>
         <li>
-          <img class="gray" src="images/c1_cream5.png" alt="cream2_gray">
-          <img class="color" src="images/c1_cream5_c.png" alt="cream2_color">
+          <div>
+            <div><img class="gray" src="images/c1_cream5.png" alt="cream2_gray"></div>
+            <div><img class="color" src="images/c1_cream5_c.png" alt="cream2_color"></div>
+          </div>
+          <p class="sj_name">순정 수분 베리어 크림</p>
         </li>
       </ul>
     </div>
@@ -257,22 +331,9 @@
     loop: true,
     autoplay: {
     delay: 3000,
-    disableOnInteraction: false
-  },
-  on: {
-    slideChangeTransitionEnd: function(){
-      updateColorByPosition(this);
-      },
-    init: function(){
-      updateColorByPosition(this);
-      }
+    disableOnInteraction: false,
     }
   });
-
-  function updateColorByPosition(swiper) {
-    const slides = swiper.slides;
-    slides.forEach(slide => slide.classList.remove("color-visible"));
-  }
   </script>
 </body>
 </html>

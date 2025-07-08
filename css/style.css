@@ -16,14 +16,14 @@ img{border:0; vertical-align:top;}
     font-style: normal;
 }
 
-body{font-family: 'Noto Sans KR', sans-serif; color:#333333;}
+body{font-family: 'Noto Sans KR', sans-serif; color:#333333; overflow-x: hidden;}
 
 .eng_font{font-family: 'Jeongnimsaji-R', sans-serif; letter-spacing: 3px; line-height: 60px;}
 
 #header{
   width:100%; height:90px;
   position: relative;
-  z-index: 10;
+  z-index: 30;
 }
 #header .top_menu{
   width:1700px;
@@ -49,10 +49,43 @@ body{font-family: 'Noto Sans KR', sans-serif; color:#333333;}
   margin-top:33px;
   margin-left:auto;
 }
+#header .top_menu .nav>li{
+  position: relative;
+}
 #header .top_menu .nav>li>a>i{
   font-size: 28px;
 }
 
+#header .top_menu .nav>li .ham_menu{
+  width: 500px; height: 935px;
+  position: absolute;
+  top:-35px; right:-520px; 
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px 0px 0px 20px;
+  transition:all 0.6s;
+  opacity: 0;
+  pointer-events: none;
+}
+#header .top_menu .nav>li .ham_menu>li{
+  text-align: center;
+  margin:35px 15px;
+}
+#header .top_menu .nav>li .ham_menu>li:first-child{
+  margin-top:240px;
+}
+#header .top_menu .nav>li .ham_menu>li>a{
+  font-size: 24px;
+}
+
+
+#header .top_menu .nav>li.ham.active .ham_menu{
+  right:-105px;
+  opacity: 1;
+  pointer-events: auto;
+}
+#header .top_menu .nav>li .ham_menu>li:hover>a{
+  color:rgb(255, 167, 181);
+}
 
 
 
@@ -137,33 +170,57 @@ body{font-family: 'Noto Sans KR', sans-serif; color:#333333;}
 }
 
 #section .soonjung .sj_cont{
-  max-width: 1800px;
-  width:100%;
+  width:98%;
   margin:0 auto;
   margin-top:30px;
   display: flex;
   justify-content: space-between;
 }
 #section .soonjung .sj_cont>li{
-  width: 200px;
-  position:relative;
+  position: relative;
   display: flex;
-  align-items: flex-end;
+  cursor: pointer;
 }
-#section .soonjung .sj_cont>li .gray,
-#section .soonjung .sj_cont>li .color{
+#section .soonjung .sj_cont>li>div>div{
+  width: 320px;
+  text-align: center;
+}
+#section .soonjung .sj_cont>li>div .gray,
+#section .soonjung .sj_cont>li>div .color{
   position: absolute;
-  bottom:-520px; left:0;
+  bottom:-520px; left:50%;
+  transform: translateX(-50%);
+  transition:all 0.6s;
 }
-#section .soonjung .sj_cont>li .gray{
+#section .soonjung .sj_cont>li>div .gray{
   z-index: 1;
 }
-#section .soonjung .sj_cont>li .color{
+#section .soonjung .sj_cont>li>div .color{
   z-index: 2;
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: all 0.6s;
+}
+#section .soonjung .sj_cont>li .sj_name{
+  width: 260px;
+  position: absolute;
+  top:540px;
+  left:50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+  transition:all 0.3s;
+}
+
+#section .soonjung .sj_cont>li:hover .gray,
+#section .soonjung .sj_cont>li:hover .color{
+  bottom:-500px;
 }
 #section .soonjung .sj_cont>li:hover .color{
+  opacity: 1;
+}
+#section .soonjung .sj_cont>li:hover>p{
   opacity: 1;
 }
 
@@ -190,6 +247,7 @@ body{font-family: 'Noto Sans KR', sans-serif; color:#333333;}
 }
 #section .mid_b .page_num>li.on{
   font-weight: 400;
+  color:rgb(247, 134, 69);
 }
 
 
@@ -208,9 +266,12 @@ body{font-family: 'Noto Sans KR', sans-serif; color:#333333;}
 #section .mid_b .mid_b_cont>li>h2,
 #section .mid_b .mid_b_cont>li>p{
   position: absolute;
-  top:210px; left:280px;
+  left:280px;
+  transition:all 0.6s;
 }
+
 #section .mid_b .mid_b_cont>li>h2{
+  top:210px;
   line-height: 60px;
   font-size: 55px;
 }
@@ -253,12 +314,48 @@ body{font-family: 'Noto Sans KR', sans-serif; color:#333333;}
 }
 #section .lovely .love_img .lip1{
   top:60px; right:400px;
+  animation: lip_rotate 3s infinite;
+}
+@keyframes lip_rotate{
+  0%{
+    transform: rotate(2deg);
+  }
+  50%{
+    transform: rotate(-2deg);
+  }
+  100%{
+    transform: rotate(2deg);
+  }
 }
 #section .lovely .love_img .lip2{
   top:400px; right:680px;
+  animation: lip_rotate2 3s infinite;
+}
+@keyframes lip_rotate2{
+  0%{
+    transform: rotate(-4deg);
+  }
+  50%{
+    transform: rotate(1deg);
+  }
+  100%{
+    transform: rotate(-4deg);
+  }
 }
 #section .lovely .love_img .lip3{
   top:832px; right:350px;
+  animation: lip_rotate3 3s infinite;
+}
+@keyframes lip_rotate3{
+  0%{
+    transform: rotate(-2deg);
+  }
+  50%{
+    transform: rotate(2deg);
+  }
+  100%{
+    transform: rotate(-2deg);
+  }
 }
 
 #section .lovely .lovely_rotate,
@@ -382,6 +479,10 @@ body{font-family: 'Noto Sans KR', sans-serif; color:#333333;}
 #section .review .bt_cont .img_rotate .color{
   z-index: 2;
   opacity: 0;
+}
+
+#section .review .bt_cont .img_rotate .swiper-slide-active+div .color{
+  opacity: 1;
 }
 
 #section .review .bt_cont .img_rotate .swiper-slide:hover .gray{

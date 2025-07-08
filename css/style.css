@@ -190,7 +190,7 @@ body{font-family: 'Noto Sans KR', sans-serif; color:#333333; overflow-x: hidden;
   position: absolute;
   bottom:-520px; left:50%;
   transform: translateX(-50%);
-  transition:all 0.6s;
+  transition:all 0.3s;
 }
 #section .soonjung .sj_cont>li>div .gray{
   z-index: 1;
@@ -198,7 +198,7 @@ body{font-family: 'Noto Sans KR', sans-serif; color:#333333; overflow-x: hidden;
 #section .soonjung .sj_cont>li>div .color{
   z-index: 2;
   opacity: 0;
-  transition: all 0.6s;
+  transition: all 0.3s;
 }
 #section .soonjung .sj_cont>li .sj_name{
   width: 260px;

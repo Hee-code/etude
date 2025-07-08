@@ -100,6 +100,7 @@ body{font-family: 'Noto Sans KR', sans-serif; color:#333333;}
 #section .main_b .main_btn{
   position: absolute;
   top:740px; right:100px;
+  z-index: 15;
 }
 #section .main_b .main_btn .mb_rotate>img{
   animation: rotate 13s linear infinite;
@@ -115,7 +116,7 @@ body{font-family: 'Noto Sans KR', sans-serif; color:#333333;}
   cursor: pointer;
 }
 
-
+/* 순정 */
 #section .soonjung{
   margin-top:150px;
 }
@@ -440,7 +441,7 @@ body{font-family: 'Noto Sans KR', sans-serif; color:#333333;}
 
 #footer .foot_cont .foot_right .sns{
   display: flex;
-  margin-top:22px;
+  margin-top:90px;
 }
 #footer .foot_cont .foot_right .sns>li>a{
   font-weight: 300;
